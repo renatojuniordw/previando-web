@@ -1,29 +1,63 @@
 <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0D2B8A"/>
-      <stop offset="100%" style="stop-color:#1A47C8"/>
+      <stop offset="0%" style="stop-color:#0B0F1A"/>
+      <stop offset="100%" style="stop-color:#0F1724"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Grain texture dots -->
+  <g opacity="0.03">
+    <circle cx="50" cy="50" r="1" fill="#F59E0B"/>
+    <circle cx="200" cy="150" r="1" fill="#F59E0B"/>
+    <circle cx="350" cy="80" r="1" fill="#F59E0B"/>
+    <circle cx="500" cy="200" r="1" fill="#F59E0B"/>
+    <circle cx="700" cy="100" r="1" fill="#F59E0B"/>
+    <circle cx="900" cy="180" r="1" fill="#F59E0B"/>
+    <circle cx="100" cy="400" r="1" fill="#F59E0B"/>
+    <circle cx="800" cy="500" r="1" fill="#F59E0B"/>
+    <circle cx="1100" cy="300" r="1" fill="#F59E0B"/>
+  </g>
   <!-- Accent bar -->
-  <rect x="0" y="0" width="1200" height="6" fill="#F5820A"/>
+  <rect x="0" y="0" width="1200" height="5" fill="#F59E0B"/>
+  <!-- Ambient glow -->
+  <circle cx="1000" cy="100" r="250" fill="#F59E0B" opacity="0.04"/>
   <!-- Brand name -->
-  <text x="80" y="120" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="64" fill="#FFFFFF">Previando</text>
+  <text x="80" y="120" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="56" fill="#F59E0B">Previando</text>
   <!-- Tagline -->
-  <text x="80" y="180" font-family="Inter, Arial, sans-serif" font-weight="400" font-size="28" fill="#EEF2FF">Previdência inteligente para advogados</text>
+  <text x="80" y="170" font-family="Inter, Arial, sans-serif" font-weight="400" font-size="26" fill="#94A3B8">Previdência inteligente para advogados</text>
   <!-- Main headline -->
-  <text x="80" y="320" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="48" fill="#FFFFFF">Inteligência Previdenciária</text>
-  <text x="80" y="380" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="48" fill="#F5820A">para Advogados</text>
-  <!-- CTA text -->
-  <text x="80" y="460" font-family="Inter, Arial, sans-serif" font-weight="500" font-size="24" fill="#EEF2FF">Faça o upload do CNIS e receba o cálculo completo</text>
-  <text x="80" y="500" font-family="Inter, Arial, sans-serif" font-weight="500" font-size="24" fill="#EEF2FF">em minutos, não em horas.</text>
-  <!-- Dashboard mockup placeholder -->
-  <rect x="640" y="100" width="480" height="400" rx="16" fill="#EEF2FF" opacity="0.15"/>
-  <rect x="670" y="130" width="420" height="60" rx="8" fill="#EEF2FF" opacity="0.1"/>
-  <rect x="670" y="210" width="200" height="90" rx="8" fill="#F5820A" opacity="0.2"/>
-  <rect x="890" y="210" width="200" height="90" rx="8" fill="#EEF2FF" opacity="0.1"/>
-  <rect x="670" y="320" width="420" height="150" rx="8" fill="#EEF2FF" opacity="0.1"/>
-  <!-- Footer -->
-  <text x="80" y="580" font-family="Inter, Arial, sans-serif" font-weight="400" font-size="18" fill="#EEF2FF" opacity="0.6">previando.com.br</text>
+  <text x="80" y="290" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="50" fill="#F8FAFC">Inteligência Previdenciária</text>
+  <text x="80" y="355" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="50" fill="#F59E0B">para Advogados</text>
+  <!-- Subtitle -->
+  <text x="80" y="430" font-family="Inter, Arial, sans-serif" font-weight="500" font-size="22" fill="#CBD5E1">Upload do CNIS → Cálculo automático → Parecer com IA → Petição inicial</text>
+  <text x="80" y="470" font-family="Inter, Arial, sans-serif" font-weight="500" font-size="22" fill="#CBD5E1">Tudo em minutos, em uma única plataforma.</text>
+  <!-- Dashboard mockup -->
+  <rect x="640" y="100" width="480" height="380" rx="6" fill="#131B2E" stroke="#1E2A45" stroke-width="1"/>
+  <rect x="640" y="100" width="480" height="40" rx="6" fill="#1E2A45"/>
+  <circle cx="662" cy="120" r="4" fill="#F59E0B"/>
+  <rect x="676" y="118" width="50" height="4" rx="2" fill="#F59E0B" opacity="0.6"/>
+  <!-- Mockup mini stats -->
+  <rect x="660" y="160" width="130" height="36" rx="3" fill="#0B0F1A" stroke="#1E2A45" stroke-width="0.5"/>
+  <rect x="808" y="160" width="130" height="36" rx="3" fill="#0B0F1A" stroke="#1E2A45" stroke-width="0.5"/>
+  <rect x="956" y="160" width="130" height="36" rx="3" fill="#0B0F1A" stroke="#1E2A45" stroke-width="0.5"/>
+  <text x="668" y="176" fill="#94A3B8" font-size="10" font-family="Inter, sans-serif">Casos ativos</text>
+  <text x="668" y="190" fill="#F8FAFC" font-size="16" font-weight="800" font-family="Inter, sans-serif">28</text>
+  <text x="816" y="176" fill="#94A3B8" font-size="10" font-family="Inter, sans-serif">RMI média</text>
+  <text x="816" y="190" fill="#F8FAFC" font-size="16" font-weight="800" font-family="Inter, sans-serif">R$ 3.847</text>
+  <text x="964" y="176" fill="#94A3B8" font-size="10" font-family="Inter, sans-serif">Honorários</text>
+  <text x="964" y="190" fill="#F59E0B" font-size="16" font-weight="800" font-family="Inter, sans-serif">R$ 42.5K</text>
+  <!-- Mockup bar chart -->
+  <rect x="660" y="280" width="16" height="40" rx="2" fill="#F59E0B" opacity="0.9"/>
+  <rect x="684" y="260" width="16" height="60" rx="2" fill="#F59E0B" opacity="0.7"/>
+  <rect x="708" y="240" width="16" height="80" rx="2" fill="#F59E0B" opacity="0.5"/>
+  <rect x="732" y="270" width="16" height="50" rx="2" fill="#F59E0B" opacity="0.6"/>
+  <rect x="756" y="220" width="16" height="100" rx="2" fill="#F59E0B"/>
+  <rect x="780" y="250" width="16" height="70" rx="2" fill="#F59E0B" opacity="0.8"/>
+  <rect x="804" y="275" width="16" height="45" rx="2" fill="#F59E0B" opacity="0.55"/>
+  <!-- CTA button -->
+  <rect x="660" y="430" width="160" height="36" rx="2" fill="#F59E0B"/>
+  <text x="668" y="454" fill="#0B0F1A" font-size="14" font-weight="700" font-family="Inter, sans-serif">Começar Gratuitamente →</text>
+  <!-- URL -->
+  <text x="80" y="570" font-family="Inter, Arial, sans-serif" font-weight="400" font-size="20" fill="#64748B">previando.com.br</text>
 </svg>
