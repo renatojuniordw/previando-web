@@ -47,7 +47,7 @@ function LegalLayout({ children }) {
 export default function App() {
   return (
     <HashRouter>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-dark-900">
         <Routes>
           <Route path="/termos" element={<LegalLayout><TermosDeUso /></LegalLayout>} />
           <Route path="/privacidade" element={<LegalLayout><Privacidade /></LegalLayout>} />

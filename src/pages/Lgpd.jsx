@@ -1,8 +1,8 @@
 export default function Lgpd() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-dark-900">
       <div className="max-w-[760px] mx-auto px-[clamp(24px,5vw,80px)] py-20">
-        <a href="/" className="text-blue-primary text-sm font-medium hover:underline mb-8 inline-block">
+        <a href="/" className="text-amber-400 text-sm font-medium hover:underline mb-8 inline-block">
           ← Voltar para Previando
         </a>
 
@@ -19,7 +19,7 @@ export default function Lgpd() {
             </p>
             <p className="mt-2">
               <strong>E-mail para contato:</strong>{' '}
-              <a href="mailto:contato@previando.com.br" className="text-blue-primary hover:underline">contato@previando.com.br</a>
+              <a href="mailto:contato@previando.com.br" className="text-amber-400 hover:underline">contato@previando.com.br</a>
             </p>
           </section>
 
@@ -51,14 +51,14 @@ export default function Lgpd() {
             <div className="overflow-x-auto mt-4">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="bg-gray-50 border-b border-gray-200">
+                  <tr className="bg-dark-700 border-b border-dark-600">
                     <th className="text-left py-3 px-4 font-semibold text-gray-900">Operação</th>
                     <th className="text-left py-3 px-4 font-semibold text-gray-900">Dados</th>
                     <th className="text-left py-3 px-4 font-semibold text-gray-900">Finalidade</th>
                     <th className="text-left py-3 px-4 font-semibold text-gray-900">Período de Guarda</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100">
+                <tbody className="divide-y divide-dark-600">
                   <tr>
                     <td className="py-3 px-4">Cadastro</td>
                     <td className="py-3 px-4">Nome, e-mail, OAB</td>
@@ -116,7 +116,7 @@ export default function Lgpd() {
             <h2 className="text-xl font-semibold text-gray-900 mb-3">5. Procedimento para Exercício de Direitos</h2>
             <p>
               Para exercer seus direitos, envie um e-mail para{' '}
-              <a href="mailto:contato@previando.com.br" className="text-blue-primary hover:underline">contato@previando.com.br</a>
+              <a href="mailto:contato@previando.com.br" className="text-amber-400 hover:underline">contato@previando.com.br</a>
               com o assunto <strong>"LGPD — Direitos do Titular"</strong> e as seguintes informações:
             </p>
             <ul className="list-disc pl-6 mt-3 space-y-1">

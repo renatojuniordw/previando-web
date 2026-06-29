@@ -1,8 +1,8 @@
 export default function TermosDeUso() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-dark-900">
       <div className="max-w-[760px] mx-auto px-[clamp(24px,5vw,80px)] py-20">
-        <a href="/" className="text-blue-primary text-sm font-medium hover:underline mb-8 inline-block">
+        <a href="/" className="text-amber-400 text-sm font-medium hover:underline mb-8 inline-block">
           ← Voltar para Previando
         </a>
 
@@ -14,8 +14,8 @@ export default function TermosDeUso() {
             <h2 className="text-xl font-semibold text-gray-900 mb-3">1. Aceitação dos Termos</h2>
             <p>
               Ao acessar ou utilizar a plataforma Previando (disponível em{' '}
-              <a href="https://app.previando.com.br" className="text-blue-primary hover:underline">app.previando.com.br</a>)
-              e o site institucional (<a href="https://previando.com.br" className="text-blue-primary hover:underline">previando.com.br</a>),
+              <a href="https://app.previando.com.br" className="text-amber-400 hover:underline">app.previando.com.br</a>)
+              e o site institucional (<a href="https://previando.com.br" className="text-amber-400 hover:underline">previando.com.br</a>),
               você declara estar de acordo com estes Termos de Uso. Caso não concorde com qualquer condição, não utilize a plataforma.
             </p>
           </section>

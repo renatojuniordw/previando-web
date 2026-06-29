@@ -1,8 +1,8 @@
 export default function Privacidade() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-dark-900">
       <div className="max-w-[760px] mx-auto px-[clamp(24px,5vw,80px)] py-20">
-        <a href="/" className="text-blue-primary text-sm font-medium hover:underline mb-8 inline-block">
+        <a href="/" className="text-amber-400 text-sm font-medium hover:underline mb-8 inline-block">
           ← Voltar para Previando
         </a>
 
@@ -86,7 +86,7 @@ export default function Privacidade() {
             </p>
             <p className="mt-3">
               O usuário pode solicitar a exclusão antecipada de seus dados entrando em contato pelo e-mail{' '}
-              <a href="mailto:contato@previando.com.br" className="text-blue-primary hover:underline">contato@previando.com.br</a>.
+              <a href="mailto:contato@previando.com.br" className="text-amber-400 hover:underline">contato@previando.com.br</a>.
             </p>
           </section>
 
@@ -120,7 +120,7 @@ export default function Privacidade() {
             </p>
             <p className="mt-2">
               <strong>E-mail:</strong>{' '}
-              <a href="mailto:contato@previando.com.br" className="text-blue-primary hover:underline">contato@previando.com.br</a>
+              <a href="mailto:contato@previando.com.br" className="text-amber-400 hover:underline">contato@previando.com.br</a>
               <br />
               <strong>Responsável:</strong> Unificando
             </p>

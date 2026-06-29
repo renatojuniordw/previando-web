@@ -1,39 +1,78 @@
 import Reveal from '../ui/Reveal'
 
+function UploadIcon() {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
+      <path d="M20 28V12M14 18l6-6 6 6" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="6" y="6" width="28" height="28" rx="4" stroke="#334155" strokeWidth="1" />
+    </svg>
+  )
+}
+
+function CalcIcon() {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
+      <rect x="6" y="6" width="28" height="28" rx="3" stroke="#F59E0B" strokeWidth="1.5" />
+      <path d="M12 16h16M12 24h8" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="24" cy="24" r="2" fill="#F59E0B" opacity="0.5" />
+    </svg>
+  )
+}
+
+function DocIcon() {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
+      <path d="M10 6h14l8 8v20a2 2 0 01-2 2H10a2 2 0 01-2-2V8a2 2 0 012-2z" stroke="#F59E0B" strokeWidth="1.5" />
+      <path d="M24 6v8h8" stroke="#F59E0B" strokeWidth="1.5" />
+      <path d="M14 22h12M14 28h8" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" opacity="0.7" />
+    </svg>
+  )
+}
+
+function GavelIcon() {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
+      <path d="M20 8l-4 10h8L20 8z" fill="#F59E0B" opacity="0.3" stroke="#F59E0B" strokeWidth="1" />
+      <path d="M20 18v6M20 28v2" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" />
+      <rect x="16" y="30" width="8" height="4" rx="1" fill="#F59E0B" opacity="0.2" stroke="#F59E0B" strokeWidth="0.5" />
+    </svg>
+  )
+}
+
 const steps = [
   {
     step: 1,
+    icon: <UploadIcon />,
     title: 'Upload do CNIS',
     description:
       'Faça o upload do PDF do portal Meu INSS. A IA extrai automaticamente todas as contribuições, períodos e vínculos.',
-    highlighted: true,
   },
   {
     step: 2,
+    icon: <CalcIcon />,
     title: 'Cálculo Automático',
     description:
       'Selecione a modalidade ou deixe o sistema sugerir a melhor. RMI, RMA, retroativos e comparativo em segundos.',
-    highlighted: false,
   },
   {
     step: 3,
+    icon: <DocIcon />,
     title: 'Parecer e Gestão',
     description:
       'Gere o parecer jurídico com IA, acompanhe no Kanban, consulte processos judiciais sem abrir o PJe.',
-    highlighted: false,
   },
   {
     step: 4,
+    icon: <GavelIcon />,
     title: 'Petição Inicial',
     description:
       'Gere a petição inicial completa com IA. Do cálculo ao protocolo — tudo na mesma plataforma.',
-    highlighted: false,
   },
 ]
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-20 bg-white">
+    <section id="how-it-works" className="py-20 bg-dark-900">
       <div className="max-w-[1200px] mx-auto px-[clamp(24px,5vw,80px)]">
         <Reveal>
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900">
@@ -46,26 +85,26 @@ export default function HowItWorks() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
           {steps.map((step) => (
             <Reveal key={step.step}>
-              {step.highlighted ? (
-                <div className="bg-blue-primary text-white rounded-[16px] p-8 h-full">
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/20 text-white font-bold text-sm mb-4">
-                    {step.step}
-                  </span>
-                  <h3 className="text-xl font-semibold">{step.title}</h3>
-                  <p className="text-white/70 text-sm mt-2 leading-relaxed">{step.description}</p>
+              <div className="bg-dark-700 border border-dark-600 p-8 transition-all duration-200 h-full group hover:border-amber-400/30 hover:shadow-hover">
+                <div className="flex items-start gap-5">
+                  <div className="flex flex-col items-center">
+                    <span className="inline-flex items-center justify-center w-10 h-10 border border-amber-400/30 text-amber-400 font-bold text-sm shrink-0 rounded-sm">
+                      {step.step}
+                    </span>
+                    {step.step < 4 && (
+                      <div className="w-px flex-1 bg-dark-600 mt-2 min-h-[20px]" />
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <div className="mb-2">{step.icon}</div>
+                    <h3 className="text-gray-900 text-lg font-semibold">{step.title}</h3>
+                    <p className="text-gray-400 text-sm mt-2 leading-relaxed">{step.description}</p>
+                  </div>
                 </div>
-              ) : (
-                <div className="bg-white shadow-[0_4px_24px_rgba(26,71,200,0.08)] rounded-[16px] p-8 h-full hover:shadow-[0_8px_40px_rgba(26,71,200,0.15)] hover:-translate-y-1 transition-all duration-200">
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-light text-blue-primary font-bold text-sm mb-4">
-                    {step.step}
-                  </span>
-                  <h3 className="text-gray-900 text-xl font-semibold">{step.title}</h3>
-                  <p className="text-gray-600 text-sm mt-2 leading-relaxed">{step.description}</p>
-                </div>
-              )}
+              </div>
             </Reveal>
           ))}
         </div>

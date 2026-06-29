@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const navLinks = [
   { label: 'Funcionalidades', href: '#features' },
@@ -9,12 +9,25 @@ const navLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-[0_2px_16px_rgba(0,0,0,0.06)] h-16">
-      <div className="max-w-[1200px] mx-auto px-[clamp(24px,5vw,80px)] h-full flex items-center justify-between">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-dark-900/95 backdrop-blur-md shadow-[0_2px_16px_rgba(0,0,0,0.4)]'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-[1200px] mx-auto px-[clamp(24px,5vw,80px)] h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#/" className="text-blue-primary font-bold text-xl tracking-tight">
+        <a href="#/" className="text-amber-400 font-bold text-xl tracking-tight">
           Previando
         </a>
 
@@ -24,7 +37,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="text-gray-600 hover:text-blue-primary text-sm font-medium transition-colors"
+              className="text-gray-400 hover:text-amber-400 text-sm font-medium transition-colors"
             >
               {link.label}
             </a>
@@ -37,7 +50,7 @@ export default function Navbar() {
             href="https://app.previando.com.br/login"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-blue-primary text-sm font-medium transition-colors"
+            className="text-gray-400 hover:text-amber-400 text-sm font-medium transition-colors"
           >
             Entrar
           </a>
@@ -45,7 +58,7 @@ export default function Navbar() {
             href="https://app.previando.com.br/register"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-orange-accent text-white px-7 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#D97008] transition-colors"
+            className="bg-amber-400 text-dark-900 px-7 py-2.5 font-semibold text-sm hover:bg-amber-500 transition-colors"
           >
             Ver Demonstração →
           </a>
@@ -53,7 +66,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-gray-900 p-2"
+          className="md:hidden text-gray-400 p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Abrir menu"
         >
@@ -72,25 +85,25 @@ export default function Navbar() {
       {/* Mobile drawer */}
       {mobileOpen && (
         <>
-          <div className="fixed inset-0 bg-black/20 z-40 md:hidden" onClick={() => setMobileOpen(false)} />
-          <div className="fixed top-16 right-0 w-72 bg-white shadow-lg z-50 md:hidden rounded-bl-2xl p-6 animate-fade-in">
+          <div className="fixed inset-0 bg-black/60 z-40 md:hidden" onClick={() => setMobileOpen(false)} />
+          <div className="fixed top-16 right-0 w-72 bg-dark-800 shadow-lg z-50 md:hidden p-6 animate-fade-in border-l border-dark-600">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-gray-600 hover:text-blue-primary text-sm font-medium transition-colors"
+                  className="text-gray-400 hover:text-amber-400 text-sm font-medium transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
-              <hr className="border-gray-100 my-2" />
+              <hr className="border-dark-600 my-2" />
               <a
                 href="https://app.previando.com.br/login"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-primary text-sm font-medium transition-colors"
+                className="text-gray-400 hover:text-amber-400 text-sm font-medium transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 Entrar
@@ -99,7 +112,7 @@ export default function Navbar() {
                 href="https://app.previando.com.br/register"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-orange-accent text-white px-7 py-3 rounded-lg font-semibold text-sm text-center hover:bg-[#D97008] transition-colors"
+                className="bg-amber-400 text-dark-900 px-7 py-3 font-semibold text-sm text-center hover:bg-amber-500 transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 Ver Demonstração →

@@ -36,14 +36,14 @@ const faqs = [
 
 function AccordionItem({ question, answer, isOpen, onToggle }) {
   return (
-    <div className="border-b border-gray-100 py-4">
+    <div className="border-b border-dark-600 py-4">
       <button
-        className="flex justify-between items-center w-full text-left cursor-pointer text-gray-900 font-medium py-1"
+        className="flex justify-between items-center w-full text-left cursor-pointer text-gray-900 font-medium py-1 group"
         onClick={onToggle}
       >
-        <span>{question}</span>
+        <span className="group-hover:text-amber-400 transition-colors">{question}</span>
         <span
-          className={`text-blue-primary text-xl transition-transform duration-200 shrink-0 ml-4 ${
+          className={`text-amber-400 text-xl transition-transform duration-200 shrink-0 ml-4 ${
             isOpen ? 'rotate-45' : ''
           }`}
         >
@@ -52,7 +52,7 @@ function AccordionItem({ question, answer, isOpen, onToggle }) {
       </button>
       <div className={`accordion-content ${isOpen ? 'open' : ''}`}>
         <div>
-          <p className="text-gray-600 text-sm mt-2 leading-relaxed pr-8">{answer}</p>
+          <p className="text-gray-400 text-sm mt-2 leading-relaxed pr-8">{answer}</p>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
-    <section id="faq" className="py-20 bg-gray-50">
+    <section id="faq" className="py-20 bg-dark-900">
       <div className="max-w-[1200px] mx-auto px-[clamp(24px,5vw,80px)]">
         <Reveal>
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900">
