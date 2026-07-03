@@ -7,6 +7,7 @@ import HowItWorks from './components/sections/HowItWorks'
 import Features from './components/sections/Features'
 import UseCases from './components/sections/UseCases'
 import ProvaSocial from './components/sections/ProvaSocial'
+import Trust from './components/sections/Trust'
 import Pricing from './components/sections/Pricing'
 import FAQ from './components/sections/FAQ'
 import FinalCTA from './components/sections/FinalCTA'
@@ -25,6 +26,7 @@ function LandingPage() {
         <Features />
         <UseCases />
         <ProvaSocial />
+        <Trust />
         <Pricing />
         <FAQ />
         <FinalCTA />
