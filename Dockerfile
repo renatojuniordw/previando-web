@@ -1,5 +1,8 @@
 FROM node:20-alpine AS build
 
+ARG VITE_GA_ID=""
+ENV VITE_GA_ID=$VITE_GA_ID
+
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
@@ -16,6 +19,7 @@ RUN apk upgrade --no-cache \
 COPY --from=build --chown=webapp:webapp /app/dist /usr/share/nginx/html
 COPY --chown=webapp:webapp nginx.main.conf /etc/nginx/nginx.conf
 COPY --chown=webapp:webapp nginx.conf /etc/nginx/conf.d/default.conf
+COPY --chown=webapp:webapp nginx.security-headers.conf /etc/nginx/snippets/security-headers.conf
 
 USER webapp
 

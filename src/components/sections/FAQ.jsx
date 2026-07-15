@@ -1,38 +1,8 @@
 import { useState } from 'react'
 import Reveal from '../ui/Reveal'
-
-const faqs = [
-  {
-    question: 'Preciso instalar alguma coisa?',
-    answer:
-      'Não. O Previando roda direto no navegador, em qualquer computador. Sem instalação, sem configuração. Acesse de qualquer lugar.',
-  },
-  {
-    question: 'Os cálculos são confiáveis juridicamente?',
-    answer:
-      'Sim. Os cálculos seguem as fórmulas oficiais da legislação previdenciária, incluindo todas as regras de transição da EC 103/2019 e atualizações de teto e salário mínimo. O parecer da IA é um rascunho — o advogado sempre revisa.',
-  },
-  {
-    question: 'Meus dados ficam seguros?',
-    answer:
-      'CPFs são armazenados de forma criptografada. PDFs são processados e armazenados em nuvem segura. Nenhum dado é compartilhado com terceiros. Servidor no Brasil.',
-  },
-  {
-    question: 'Posso cancelar quando quiser?',
-    answer:
-      'Sim. Sem multa, sem fidelidade. Cancele pelo painel e o plano fica ativo até o fim do período pago.',
-  },
-  {
-    question: 'E se a legislação mudar?',
-    answer:
-      'O sistema é atualizado automaticamente. Quando há novas regras — novo teto, novas modalidades, novas tabelas — a atualização entra sem ação da sua parte. Cálculos antigos ficam preservados com a lei da época.',
-  },
-  {
-    question: 'O que é o Portal do Cliente?',
-    answer:
-      'É um link que você envia para o cliente acompanhar o caso. Ele vê os valores calculados, documentos e pode simular cenários. Reduz em até 70% as ligações perguntando "e o processo?"',
-  },
-]
+import SectionHeading from '../ui/SectionHeading'
+import { trackEvent } from '../../lib/analytics'
+import { faqs } from '../../data/faqs'
 
 function AccordionItem({ question, answer, isOpen, onToggle }) {
   return (
@@ -40,12 +10,14 @@ function AccordionItem({ question, answer, isOpen, onToggle }) {
       <button
         className="flex justify-between items-center w-full text-left cursor-pointer text-gray-900 font-medium py-1 group"
         onClick={onToggle}
+        aria-expanded={isOpen}
       >
         <span className="group-hover:text-amber-400 transition-colors">{question}</span>
         <span
           className={`text-amber-400 text-xl transition-transform duration-200 shrink-0 ml-4 ${
             isOpen ? 'rotate-45' : ''
           }`}
+          aria-hidden="true"
         >
           +
         </span>
@@ -62,24 +34,26 @@ function AccordionItem({ question, answer, isOpen, onToggle }) {
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null)
 
+  const toggle = (index) => {
+    const willOpen = openIndex !== index
+    setOpenIndex(willOpen ? index : null)
+    if (willOpen) trackEvent('faq_open', { question: faqs[index].question })
+  }
+
   return (
     <section id="faq" className="py-20 bg-dark-900">
       <div className="max-w-[1200px] mx-auto px-[clamp(24px,5vw,80px)]">
-        <Reveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900">
-            Perguntas Frequentes
-          </h2>
-        </Reveal>
+        <SectionHeading title="Perguntas Frequentes" />
 
         <Reveal>
-          <div className="max-w-[760px] mx-auto mt-10">
+          <div className="max-w-[760px] mx-auto">
             {faqs.map((faq, index) => (
               <AccordionItem
-                key={index}
+                key={faq.question}
                 question={faq.question}
                 answer={faq.answer}
                 isOpen={openIndex === index}
-                onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                onToggle={() => toggle(index)}
               />
             ))}
           </div>

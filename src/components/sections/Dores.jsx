@@ -1,4 +1,5 @@
 import Reveal from '../ui/Reveal'
+import GlowCard from '../ui/GlowCard'
 
 function ClockIcon() {
   return (
@@ -38,7 +39,7 @@ const dores = [
     icon: <ClockIcon />,
     title: 'Horas perdidas por caso',
     description:
-      'Um cálculo que deveria levar 15 minutos leva 2 horas. Multiplique por 30 casos por mês.',
+      'Um cálculo que deveria levar 15 minutos leva 2 horas. Com 30 casos no mês, são 60 horas — quase duas semanas de trabalho só conferindo planilha.',
   },
   {
     icon: <AlertIcon />,
@@ -74,11 +75,11 @@ export default function Dores() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
           {dores.map((dor) => (
             <Reveal key={dor.title}>
-              <div className="bg-dark-700 border border-dark-600 p-8 hover:border-amber-400/30 hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200 h-full group">
+              <GlowCard className="p-8 h-full">
                 {dor.icon}
                 <h3 className="text-gray-900 font-semibold text-lg">{dor.title}</h3>
                 <p className="text-gray-400 text-sm mt-2 leading-relaxed">{dor.description}</p>
-              </div>
+              </GlowCard>
             </Reveal>
           ))}
         </div>

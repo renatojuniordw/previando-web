@@ -1,4 +1,5 @@
 import Reveal from '../ui/Reveal'
+import GlowCard from '../ui/GlowCard'
 
 function UploadIcon() {
   return (
@@ -86,25 +87,20 @@ export default function HowItWorks() {
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
-          {steps.map((step) => (
-            <Reveal key={step.step}>
-              <div className="bg-dark-700 border border-dark-600 p-8 transition-all duration-200 h-full group hover:border-amber-400/30 hover:shadow-hover">
+          {steps.map((step, index) => (
+            <Reveal key={step.step} style={{ transitionDelay: `${index * 0.12}s` }}>
+              <GlowCard className="p-8 h-full">
                 <div className="flex items-start gap-5">
-                  <div className="flex flex-col items-center">
-                    <span className="inline-flex items-center justify-center w-10 h-10 border border-amber-400/30 text-amber-400 font-bold text-sm shrink-0 rounded-sm">
-                      {step.step}
-                    </span>
-                    {step.step < 4 && (
-                      <div className="w-px flex-1 bg-dark-600 mt-2 min-h-[20px]" />
-                    )}
-                  </div>
+                  <span className="inline-flex items-center justify-center w-10 h-10 border border-amber-400/30 bg-amber-400/10 text-amber-400 font-bold text-sm shrink-0 rounded-md glow-sm">
+                    {step.step}
+                  </span>
                   <div className="flex-1">
                     <div className="mb-2">{step.icon}</div>
                     <h3 className="text-gray-900 text-lg font-semibold">{step.title}</h3>
                     <p className="text-gray-400 text-sm mt-2 leading-relaxed">{step.description}</p>
                   </div>
                 </div>
-              </div>
+              </GlowCard>
             </Reveal>
           ))}
         </div>

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
+import { loginLink, registerLink } from '../../lib/links'
 
 const navLinks = [
-  { label: 'Funcionalidades', href: '#features' },
-  { label: 'Planos', href: '#pricing' },
-  { label: 'Blog', href: '#' },
-  { label: 'Sobre', href: '#' },
+  { label: 'Funcionalidades', href: '/#features' },
+  { label: 'Comparativo', href: '/#comparativo' },
+  { label: 'Planos', href: '/#pricing' },
+  { label: 'FAQ', href: '/#faq' },
 ]
 
 export default function Navbar() {
@@ -27,7 +28,7 @@ export default function Navbar() {
     >
       <div className="max-w-[1200px] mx-auto px-[clamp(24px,5vw,80px)] h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#/" className="text-amber-400 font-bold text-xl tracking-tight">
+        <a href="/" className="text-amber-400 font-bold text-xl tracking-tight">
           Previando
         </a>
 
@@ -47,7 +48,7 @@ export default function Navbar() {
         {/* Desktop actions */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="https://app.previando.com.br/login"
+            href={loginLink('navbar')}
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-amber-400 text-sm font-medium transition-colors"
@@ -55,12 +56,12 @@ export default function Navbar() {
             Entrar
           </a>
           <a
-            href="https://app.previando.com.br/register"
+            href={registerLink('navbar')}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-amber-400 text-dark-900 px-7 py-2.5 font-semibold text-sm hover:bg-amber-500 transition-colors"
           >
-            Ver Demonstração →
+            Começar Grátis →
           </a>
         </div>
 
@@ -100,7 +101,7 @@ export default function Navbar() {
               ))}
               <hr className="border-dark-600 my-2" />
               <a
-                href="https://app.previando.com.br/login"
+                href={loginLink('navbar-mobile')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-amber-400 text-sm font-medium transition-colors"
@@ -109,13 +110,13 @@ export default function Navbar() {
                 Entrar
               </a>
               <a
-                href="https://app.previando.com.br/register"
+                href={registerLink('navbar-mobile')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-amber-400 text-dark-900 px-7 py-3 font-semibold text-sm text-center hover:bg-amber-500 transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
-                Ver Demonstração →
+                Começar Grátis →
               </a>
             </div>
           </div>

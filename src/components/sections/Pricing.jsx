@@ -1,4 +1,8 @@
+import { useEffect, useRef } from 'react'
 import Reveal from '../ui/Reveal'
+import SectionHeading from '../ui/SectionHeading'
+import CTAButton from '../ui/CTAButton'
+import { trackEvent } from '../../lib/analytics'
 
 const plans = [
   {
@@ -10,9 +14,10 @@ const plans = [
       { text: '3 clientes', included: true },
       { text: '5 cálculos/mês', included: true },
       { text: '1 parecer IA/mês', included: true },
-      { text: 'Marca d\'água em PDFs', included: false },
-      { text: 'Sem simulador', included: false },
-      { text: 'Sem BPC/LOAS', included: false },
+      { text: '10 anotações por caso', included: true },
+      { text: 'PDFs com marca d’água', included: false },
+      { text: 'Sem simulador e retroativos', included: false },
+      { text: 'Sem BPC/LOAS e petição IA', included: false },
     ],
     cta: 'Começar Grátis',
   },
@@ -26,17 +31,16 @@ const plans = [
       { text: '30 clientes', included: true },
       { text: 'Cálculos ilimitados', included: true },
       { text: '20 pareceres IA/mês', included: true },
-      { text: 'Petição Inicial (5/mês)', included: true },
+      { text: '5 petições iniciais IA/mês', included: true },
+      { text: '50 análises BPC/LOAS/mês', included: true },
+      { text: '30 interpretações de movimentações/mês', included: true },
       { text: 'Simulador de cenários futuros', included: true },
       { text: 'Cálculo de retroativos', included: true },
-      { text: 'Consulta de Processos (30/mês)', included: true },
-      { text: 'Revisão de benefícios (20/mês)', included: true },
-      { text: 'BPC/LOAS (50 análises/mês)', included: true },
-      { text: 'WhatsApp e Google Agenda', included: true },
-      { text: 'Diagnóstico IA por prontuário', included: true },
-      { text: 'PDF sem marca d\'água', included: true },
+      { text: 'Diagnóstico IA do caso', included: true },
+      { text: 'Portal do Cliente', included: true },
+      { text: 'PDF timbrado sem marca d’água', included: true },
     ],
-    cta: 'Assinar Solo',
+    cta: 'Testar Grátis',
   },
   {
     name: 'PRO',
@@ -46,16 +50,14 @@ const plans = [
     popular: false,
     features: [
       { text: 'Clientes ilimitados', included: true },
-      { text: 'Cálculos ilimitados', included: true },
       { text: 'Pareceres IA ilimitados', included: true },
-      { text: 'Petição Inicial ilimitada', included: true },
-      { text: 'BPC/LOAS ilimitado', included: true },
-      { text: 'Revisões ilimitadas', included: true },
-      { text: 'Consultas de processos ilimitadas', included: true },
-      { text: 'Portal do Cliente com simulador', included: true },
-      { text: 'PDF sem marca d\'água', included: true },
+      { text: 'Petições iniciais ilimitadas', included: true },
+      { text: 'Análises BPC/LOAS ilimitadas', included: true },
+      { text: 'Interpretações de movimentações ilimitadas', included: true },
+      { text: 'Tudo do Solo, sem limites mensais', included: true },
+      { text: 'Portal do Cliente com simulador "E se?"', included: true },
     ],
-    cta: 'Assinar Pro',
+    cta: 'Testar Grátis',
   },
 ]
 
@@ -76,30 +78,45 @@ function XIcon() {
 }
 
 export default function Pricing() {
-  return (
-    <section id="pricing" className="py-20 bg-dark-800">
-      <div className="max-w-[1200px] mx-auto px-[clamp(24px,5vw,80px)]">
-        <Reveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900">
-            Comece Grátis. Evolua quando quiser.
-          </h2>
-        </Reveal>
-        <Reveal>
-          <p className="text-gray-400 text-center mt-3">Sem fidelidade. Cancele a qualquer momento.</p>
-        </Reveal>
+  const sectionRef = useRef(null)
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12 items-start">
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          trackEvent('pricing_view')
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <section id="pricing" ref={sectionRef} className="py-20 bg-dark-800">
+      <div className="max-w-[1200px] mx-auto px-[clamp(24px,5vw,80px)]">
+        <SectionHeading
+          eyebrow="Planos"
+          title="Comece Grátis. Evolua quando quiser."
+          subtitle="Sem fidelidade. Cancele a qualquer momento."
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
           {plans.map((plan) => (
             <Reveal key={plan.name}>
               <div
                 className={
                   plan.popular
-                    ? 'bg-dark-700 border-2 border-amber-400 p-8 relative shadow-glow'
-                    : 'bg-dark-700 border border-dark-600 p-8'
+                    ? 'gradient-border rounded-lg p-8 relative'
+                    : 'glass card-lift rounded-lg p-8'
                 }
               >
                 {plan.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-dark-900 text-xs px-3 py-1 font-bold rounded-sm">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-dark-900 text-xs px-3 py-1 font-bold rounded-pill glow-sm">
                     Mais Popular
                   </span>
                 )}
@@ -120,18 +137,13 @@ export default function Pricing() {
                   ))}
                 </ul>
 
-                <a
-                  href="https://app.previando.com.br/register"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={
-                    plan.popular
-                      ? 'block text-center bg-amber-400 text-dark-900 px-6 py-3 font-semibold text-sm hover:bg-amber-500 transition-colors mt-8'
-                      : 'block text-center border border-dark-600 text-gray-400 px-6 py-3 font-semibold text-sm hover:border-amber-400/50 hover:text-amber-400 transition-colors mt-8'
-                  }
+                <CTAButton
+                  section={`pricing-${plan.name.toLowerCase()}`}
+                  variant={plan.popular ? 'primary' : 'ghost'}
+                  className="w-full mt-8 px-6! py-3! text-sm"
                 >
                   {plan.cta}
-                </a>
+                </CTAButton>
               </div>
             </Reveal>
           ))}

@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VITE_GA_ID: ${VITE_GA_ID:-}
     container_name: previando-web
     restart: unless-stopped
     ports:

@@ -1,4 +1,5 @@
 import Reveal from '../ui/Reveal'
+import GlowCard from '../ui/GlowCard'
 
 const featureData = [
   {
@@ -32,9 +33,10 @@ const featureData = [
             <rect x="18" y="4" width="10" height="20" rx="1.5" stroke="#F59E0B" strokeWidth="1.5" opacity="0.7" />
           </svg>
         ),
-        title: 'Comparativo 14×2 Gêneros',
-        description: '28 cenários calculados automaticamente. O sistema mostra qual modalidade oferece o melhor RMI para cada cliente. Teste todas sem esforço manual.',
+        title: 'Comparativo de 22 Cenários',
+        description: 'Todas as modalidades calculadas automaticamente, de uma vez. O sistema mostra qual regra oferece o melhor RMI para cada cliente — sem testar uma a uma.',
         size: 'lg',
+        highlight: true,
       },
     ],
   },
@@ -63,6 +65,7 @@ const featureData = [
         title: 'Petição Inicial Automática',
         description: 'Com um clique, gere a petição completa: dados do cliente, fundamentação legal, cálculos e pedidos. Copie, edite e protocole.',
         size: 'sm',
+        highlight: true,
       },
       {
         icon: (
@@ -163,25 +166,26 @@ const featureData = [
   },
 ]
 
-function FeatureCard({ icon, title, description, size }) {
-  const sizeClasses = {
-    sm: 'col-span-1 row-span-1',
-    md: 'col-span-1 md:col-span-1 lg:col-span-1',
-    lg: 'col-span-1 lg:col-span-2 row-span-1',
-  }
+const sizeClasses = {
+  sm: 'col-span-1 row-span-1',
+  md: 'col-span-1 md:col-span-1 lg:col-span-1',
+  lg: 'col-span-1 lg:col-span-2 row-span-1',
+}
+
+function FeatureCard({ icon, title, description, highlight }) {
+  const Wrapper = highlight ? 'div' : GlowCard
+  const highlightClass = highlight ? 'gradient-border rounded-lg' : ''
 
   return (
-    <div
-      className={`bg-dark-700 border border-dark-600 p-6 transition-all duration-200 group hover:border-amber-400/30 hover:shadow-hover hover:-translate-y-0.5 ${sizeClasses[size] || 'col-span-1'}`}
-    >
-      <div className="w-10 h-10 rounded-sm bg-amber-400/10 border border-amber-400/20 flex items-center justify-center mb-4 group-hover:bg-amber-400/20 transition-colors">
+    <Wrapper className={`p-6 group h-full ${highlightClass}`}>
+      <div className="w-10 h-10 rounded-md bg-amber-400/10 border border-amber-400/20 flex items-center justify-center mb-4 group-hover:bg-amber-400/20 transition-colors">
         {icon}
       </div>
       <h3 className="text-gray-900 font-semibold text-sm">{title}</h3>
       <p className="text-gray-400 text-xs mt-2 leading-relaxed">
         {description}
       </p>
-    </div>
+    </Wrapper>
   )
 }
 
@@ -209,7 +213,7 @@ export default function Features() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {group.items.map((feature) => (
-                <Reveal key={feature.title}>
+                <Reveal key={feature.title} className={sizeClasses[feature.size] || 'col-span-1'}>
                   <FeatureCard {...feature} />
                 </Reveal>
               ))}

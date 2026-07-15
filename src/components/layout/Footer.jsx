@@ -1,19 +1,21 @@
+import { Link } from 'react-router-dom'
+
 const footerColumns = [
   {
     title: 'Produto',
     links: [
-      { label: 'Funcionalidades', href: '#features' },
-      { label: 'Planos', href: '#pricing' },
-      { label: 'Blog', href: '#' },
-      { label: 'Central de Ajuda', href: '#' },
+      { label: 'Funcionalidades', href: '/#features' },
+      { label: 'Comparativo', href: '/#comparativo' },
+      { label: 'Planos', href: '/#pricing' },
+      { label: 'FAQ', href: '/#faq' },
     ],
   },
   {
     title: 'Legal',
     links: [
-      { label: 'Termos de Uso', href: '#/termos' },
-      { label: 'Política de Privacidade', href: '#/privacidade' },
-      { label: 'LGPD', href: '#/lgpd' },
+      { label: 'Termos de Uso', href: '/termos', internal: true },
+      { label: 'Política de Privacidade', href: '/privacidade', internal: true },
+      { label: 'LGPD', href: '/lgpd', internal: true },
     ],
   },
   {
@@ -34,7 +36,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand column */}
           <div>
-            <a href="#hero" className="text-amber-400 font-bold text-xl tracking-tight">
+            <a href="/#hero" className="text-amber-400 font-bold text-xl tracking-tight">
               Previando
             </a>
             <p className="text-gray-400 text-sm mt-3 leading-relaxed">
@@ -56,18 +58,27 @@ export default function Footer() {
           {/* Link columns */}
           {footerColumns.map((col) => (
             <div key={col.title}>
-              <h4 className="text-gray-900 font-semibold text-sm mb-4">{col.title}</h4>
+              <h3 className="text-gray-900 font-semibold text-sm mb-4">{col.title}</h3>
               <ul className="space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      target={link.href.startsWith('http') ? '_blank' : undefined}
-                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="text-gray-400 hover:text-amber-400 text-sm transition-colors"
-                    >
-                      {link.label}
-                    </a>
+                    {link.internal ? (
+                      <Link
+                        to={link.href}
+                        className="text-gray-400 hover:text-amber-400 text-sm transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        target={link.href.startsWith('http') ? '_blank' : undefined}
+                        rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="text-gray-400 hover:text-amber-400 text-sm transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
