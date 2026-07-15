@@ -1,0 +1,42 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: previando-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:60001:60001"
+    read_only: true
+    tmpfs:
+      - /tmp:size=32M
+      - /var/log/nginx:size=16M
+      - /var/cache/nginx:size=16M
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:60001/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 128M
+        reservations:
+          memory: 32M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - previando-web-net
+
+networks:
+  previando-web-net:
+    driver: bridge
