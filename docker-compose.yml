@@ -9,9 +9,8 @@ services:
       - "127.0.0.1:60001:60001"
     read_only: true
     tmpfs:
-      - /tmp:size=32M
-      - /var/log/nginx:size=16M
-      - /var/cache/nginx:size=16M
+      - /tmp:size=32M,mode=1777
+      - /var/cache/nginx:size=16M,mode=1777
     security_opt:
       - no-new-privileges:true
     cap_drop:

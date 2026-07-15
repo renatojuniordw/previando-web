@@ -11,11 +11,7 @@ FROM nginx:1.25-alpine AS serve
 RUN apk upgrade --no-cache \
     && addgroup -S webapp && adduser -S -G webapp webapp \
     && rm -rf /usr/share/nginx/html/* \
-    && mkdir -p /tmp/nginx/client_temp /tmp/nginx/proxy_temp /tmp/nginx/fastcgi_temp \
-       /tmp/nginx/uwsgi_temp /tmp/nginx/scgi_temp \
-    && chown -R webapp:webapp /usr/share/nginx/html /var/cache/nginx /tmp/nginx \
-       /var/log/nginx /etc/nginx/conf.d \
-    && touch /tmp/nginx/nginx.pid && chown webapp:webapp /tmp/nginx/nginx.pid
+    && chown -R webapp:webapp /usr/share/nginx/html /var/cache/nginx /etc/nginx/conf.d
 
 COPY --from=build --chown=webapp:webapp /app/dist /usr/share/nginx/html
 COPY --chown=webapp:webapp nginx.main.conf /etc/nginx/nginx.conf
