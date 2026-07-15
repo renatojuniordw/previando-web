@@ -1,4 +1,3 @@
-import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
@@ -14,11 +13,10 @@ import Trust from './components/sections/Trust'
 import Pricing from './components/sections/Pricing'
 import FAQ from './components/sections/FAQ'
 import FinalCTA from './components/sections/FinalCTA'
+import RoiCalculator from './components/sections/RoiCalculator'
 import TermosDeUso from './pages/TermosDeUso'
 import Privacidade from './pages/Privacidade'
 import Lgpd from './pages/Lgpd'
-
-const RoiCalculator = lazy(() => import('./components/sections/RoiCalculator'))
 
 function LandingPage() {
   return (
@@ -32,9 +30,7 @@ function LandingPage() {
         <Comparativo />
         <Features />
         <UseCases />
-        <Suspense fallback={<section id="roi" className="py-20 bg-dark-900" />}>
-          <RoiCalculator />
-        </Suspense>
+        <RoiCalculator />
         <ProvaSocial />
         <Trust />
         <Pricing />
