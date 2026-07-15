@@ -11,7 +11,6 @@ const rows = [
   { label: 'Petição inicial completa em 1 clique', values: [false, false, false] },
   { label: 'Portal do Cliente com simulador "E se?"', values: [false, false, 'partial'] },
   { label: 'Módulo BPC/LOAS completo', values: [false, false, false] },
-  { label: 'Consulta processual DataJud/CNJ com resumo IA', values: [false, false, 'partial'] },
   { label: 'Prontuário imutável do caso', values: [false, false, 'partial'] },
   { label: 'Atualização automática da legislação', values: [false, true, false] },
 ]

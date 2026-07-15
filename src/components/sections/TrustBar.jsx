@@ -1,6 +1,5 @@
 const items = [
   'Conforme EC 103/2019',
-  'Integração DataJud/CNJ',
   'LGPD',
   'Servidores no Brasil',
   'Atualização automática da legislação',

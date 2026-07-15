@@ -54,9 +54,4 @@ export const faqs = [
     answer:
       'É um link que você envia para o cliente acompanhar o caso. Ele vê os valores calculados, documentos e, no plano Pro, pode simular cenários "E se?". Reduz drasticamente as ligações perguntando "e o processo?"',
   },
-  {
-    question: 'Como funciona a consulta de processos?',
-    answer:
-      'Você informa o número CNJ e o sistema busca o andamento na base pública DataJud, do CNJ, com resumo das movimentações em linguagem clara gerado por IA — sem precisar abrir o PJe.',
-  },
 ]
